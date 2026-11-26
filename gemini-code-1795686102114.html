@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AETHER & CO. | 컨템포러리 패션 & 스타일 에디토리얼</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Supabase 공식 JS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    :root {
+      --dark-blue: #0A192F;
+      --dark-blue-light: #112240;
+      --royal-blue: #1D4ED8;
+      --royal-blue-hover: #2563EB;
+      --accent-gold: #F59E0B;
+      --accent-cyan: #38BDF8;
+      --bg-light: #F8FAFC;
+      --text-dark: #0F172A;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --shadow-sm: 0 2px 8px rgba(10, 25, 47, 0.06);
+      --shadow-md: 0 10px 25px rgba(10, 25, 47, 0.12);
+      --shadow-lg: 0 20px 40px rgba(10, 25, 47, 0.25);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    button { cursor: pointer; font-family: inherit; border: none; outline: none; transition: var(--transition); }
+    a { text-decoration: none; color: inherit; }
+
+    /* TOP BANNER */
+    .top-banner {
+      background: linear-gradient(90deg, var(--dark-blue) 0%, var(--royal-blue) 50%, var(--dark-blue) 100%);
+      color: #fff;
+      text-align: center;
+      font-size: 0.82rem;
+      padding: 8px 16px;
+      letter-spacing: 0.03em;
+      font-weight: 500;
+    }
+    .top-banner span { color: var(--accent-gold); font-weight: 700; }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 25, 47, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-dot { width: 8px; height: 8px; background-color: var(--accent-cyan); border-radius: 50%; display: inline-block; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.82);
+      position: relative;
+      padding: 6px 0;
+    }
+    .nav-links a:hover { color: var(--accent-cyan); }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+      background: var(--accent-cyan); transition: var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .user-badge-pill {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(29, 78, 216, 0.35);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 6px 14px; border-radius: 999px; font-size: 0.82rem; color: #fff;
+    }
+    .tier-tag {
+      background: var(--accent-gold); color: var(--dark-blue);
+      font-weight: 800; padding: 2px 7px; border-radius: 4px; font-size: 0.72rem; text-transform: uppercase;
+    }
+    .btn-nav {
+      background: transparent; color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 500;
+    }
+    .btn-nav:hover { background: var(--royal-blue); border-color: var(--royal-blue); }
+    .btn-cart {
+      background: var(--royal-blue); color: #fff;
+      padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .btn-cart:hover { background: var(--royal-blue-hover); transform: translateY(-1px); }
+    .cart-count {
+      background: var(--accent-gold); color: var(--dark-blue);
+      font-weight: 800; font-size: 0.75rem; padding: 1px 6px; border
